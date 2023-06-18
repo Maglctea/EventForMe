@@ -1,0 +1,41 @@
+version: '3.1'
+services:
+  db:
+    image: postgres:13.1
+    privileged: true
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Qwerty12
+      POSTGRES_DB: eventforme
+  web:
+      build: .
+      restart: always
+      privileged: true
+      ports:
+        - "8080:8080"
+      command:
+        bash -c "python manage.py collectstatic --noinput 
+        && python manage.py makemigrations
+        && python manage.py migrate
+        && gunicorn backend.wsgi -b 0.0.0.0:8080"
+      volumes:
+        - .:/app
+        - static_volume:/home/app/web/static
+      environment:
+         DJANGO_SETTINGS_MODULE: backend.settings.prod
+
+      depends_on:
+          - db
+
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/home/app/web/static
+    ports:
+      - "8000:80"
+    depends_on:
+      - web
+volumes:
+  static_volume:
