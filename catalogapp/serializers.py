@@ -11,7 +11,6 @@ class ImageTerritorySerializer(ModelSerializer):
     """Сериализатор для картинок территорий"""
 
     # image = serializers.ImageField(required=False)
-    # todo
     class Meta:
         model = ImageTerritory
         fields = "__all__"

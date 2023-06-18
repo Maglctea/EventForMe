@@ -210,7 +210,6 @@ class ImageTerritoryListView(ListAPIView, CreateAPIView):
     queryset = ImageTerritory.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly | BrideReadonlyPermission | VendorCanCreatePermission]
 
-    # todo
     def post(self, request, *args, **kwargs):
         if request.data.get(self.img_array):
             serializer = ImageTerritorySerializer(data=request.data)
