@@ -1,6 +1,6 @@
 # EventForMe
 
-API, на Django, полученное в результате стажировки в https://eventforme.ru/
+API на Django rest framework, полученное в результате стажировки в https://eventforme.ru/
 
 ## Установка
 Загрузка проекта
