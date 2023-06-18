@@ -19,3 +19,6 @@ pip install -r requirements.txt
 Windows: ```python manage.py runserver --settings=backend.settings.debug```
 
 Linux: ```python3 manage.py runserver --settings=backend.settings.debug```
+
+## Проблемы?
+Возникли баги или вопросы? Напишите в тг на @maglctea
